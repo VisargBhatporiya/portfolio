@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visarg | Creative Developer & Motion Designer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  
+  <!-- Google Fonts matching reference video -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Italianno&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Reenie+Beanie&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="theme-light">
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- SVG Filter for Liquid Text Wobble Effect -->
+  <svg class="absolute w-0 h-0 pointer-events-none overflow-hidden" width="0" height="0">
+    <filter id="liquid-distortion">
+      <feTurbulence id="feTurbulence" type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" result="noise" />
+      <feDisplacementMap id="feDisplacementMap" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </svg>
+
+  <!-- Preloader Screen -->
+  <div id="preloader">
+    <div class="loader-ring-wrapper">
+      <svg class="loader-ring-svg" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2" />
+        <path d="M 50,5 A 45,45 0 0 1 95,50" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+      </svg>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <span id="loader-percent">0%</span>
+      </div>
+    </div>
+    <div id="hello-svg-container" class="opacity-0 transition-opacity duration-300">
+      <div class="hello-text">hello</div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Navigation Menu Overlay (Matching Reference Screenshot Exactly) -->
+  <div id="fullscreen-menu">
+    <button id="menu-close-btn" class="menu-close-btn" aria-label="Close Menu">✕</button>
+
+    <div class="menu-links-container">
+      <a href="#work" class="menu-nav-item">WORK</a>
+      <a href="#about" class="menu-nav-item">ABOUT</a>
+      <a href="#expertise" class="menu-nav-item">EXPERTISE</a>
+      <a href="#journal" class="menu-nav-item">JOURNAL</a>
+      <a href="#contact" class="menu-nav-item">CONTACT</a>
+    </div>
+  </div>
+
+  <!-- Main Content Wrapper -->
+  <main id="smooth-wrapper">
+    <div id="smooth-content">
+
+      <!-- Main Navigation Bar (Matching Reference Screenshot Exactly) -->
+      <header class="ref-header">
+        <a href="#" class="ref-logo-signature">visarg</a>
+
+        <!-- Center Navigation Links -->
+        <nav class="ref-nav-menu">
+          <a href="#work" class="ref-nav-link">WORK</a>
+          <a href="#about" class="ref-nav-link">ABOUT</a>
+          <a href="#expertise" class="ref-nav-link">EXPERTISE</a>
+          <a href="#journal" class="ref-nav-link">JOURNAL</a>
+          <a href="#contact" class="ref-nav-link">CONTACT</a>
+        </nav>
+
+        <!-- Right Hamburger Menu Icon (=) -->
+        <button id="menu-toggle-btn" class="ref-hamburger-icon" aria-label="Open Fullscreen Menu">
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <!-- Hero Section (Matching Reference Screenshot media_1788761955943.png) -->
+      <section class="hero-section">
+        <div class="hero-content-inner">
+          
+          <!-- Central Ultra-Bold Liquid Distortion Hero Typography -->
+          <div class="hero-main-title">
+            <h1 class="title-line-1 hero-title-1">
+              <span class="liquid-text">CREATIVE</span>
+            </h1>
+            <h1 class="title-line-2 hero-title-2">DEVELOPER</h1>
+          </div>
+
+          <!-- Hero Sub-Tags Bar -->
+          <div class="hero-tags-row">
+            <span class="tag-item">VISUALS</span>
+            <span class="dot-item">•</span>
+            <span class="tag-item">CODE</span>
+            <span class="dot-item">•</span>
+            <span class="tag-item">EXPERIENCE</span>
+          </div>
+
+          <!-- Scroll To Explore -->
+          <div class="scroll-explore-wrapper">
+            <span>SCROLL TO EXPLORE</span>
+            <span class="scroll-icon">↓</span>
+          </div>
+
+        </div>
+
+        <!-- Bottom Left Signature Copyright -->
+        <div class="hero-corner-signature">©2026 visarg</div>
+
+        <!-- Bottom Right Rotating Stamp Badge -->
+        <div class="stamp-badge-wrapper">
+          <div class="stamp-badge">
+            <svg class="stamp-svg" viewBox="0 0 100 100">
+              <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+              <text font-size="8.5" font-weight="700" fill="#111111" letter-spacing="1.8">
+                <textPath href="#circlePath">LET'S WORK TOGETHER • </textPath>
+              </text>
+            </svg>
+            <div class="stamp-arrow">↗</div>
+          </div>
+          <div class="stamp-subtitle">BASED IN INDIA</div>
+        </div>
+      </section>
+
+      <!-- About Me Section (Matching Reference Screenshot media_1788762972717.png) -->
+      <section id="about" class="about-section">
+        <div class="container-custom">
+          
+          <!-- Centered Header Title -->
+          <div class="about-header-centered">
+            <div class="about-top-tag">01 &nbsp; ── &nbsp; THE PERSON BEHIND THE WORK</div>
+            <h2 class="about-main-heading">ABOUT ME</h2>
+            
+            <!-- Interactive Elastic Gold String Divider Line -->
+            <div class="interactive-string-container">
+              <svg class="string-svg" viewBox="0 0 500 40" preserveAspectRatio="none">
+                <path class="string-path" d="M 0 20 Q 250 20 500 20" stroke="#c5a880" stroke-width="2.5" fill="none" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="about-grid-2col">
+            <!-- Left: Portrait Photo Card -->
+            <div class="about-portrait-card">
+              <img id="developer-portrait-img" src="/visarg-portrait.jpg" alt="Visarg Bhatporiya" class="portrait-img" />
+              
+              <!-- Name Overlay Tag Top-Left -->
+              <div class="portrait-name-tag">VISARG BHATPORIYA</div>
+
+              <!-- Quick Action Floating Buttons Stack Bottom-Right -->
+              <div class="portrait-actions-stack">
+                <a href="mailto:vickybhatporiya123@gmail.com" class="portrait-action-icon" aria-label="Send Email">✉</a>
+                <a href="https://github.com/VisargBhatporiya" target="_blank" rel="noopener noreferrer" class="portrait-action-icon" aria-label="Github Profile">↗</a>
+              </div>
+            </div>
+
+            <!-- Right: Bio Content & Stats Grid -->
+            <div class="about-content-right">
+              <div class="about-sub-tag">── &nbsp; WHO AM I ?</div>
+              
+              <h3 class="about-bio-headline">
+                I BUILD <span class="text-gold">DIGITAL WORLDS</span> WHERE <span class="text-gold">DESIGN</span> MEETS <span class="text-gold">CODE.</span>
+              </h3>
+
+              <div class="about-paragraphs-grid">
+                <p class="about-paragraph">
+                  I'm Visarg — a creative frontend developer who enjoys turning ideas, interfaces and motion-rich experiences people remember.
+                </p>
+                <p class="about-paragraph">
+                  I care about the details most people don't notice: the rhythm of typography, the timing of an interaction, the way a motion feels and the tiny moments that make a digital product feel alive.
+                </p>
+              </div>
+
+              <!-- 6-Grid Stats Info Cards -->
+              <div class="stats-grid-container" id="stats-grid">
+                <!-- Dynamically populated via JS -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <!-- Expertise Section (Matching Reference Screenshot media_1788763938775.png) -->
+      <section id="expertise" class="expertise-section">
+        <div class="container-custom">
+          
+
+
+          <div class="expertise-grid-2col">
+            
+            <!-- Left Column: Title & Physics Floating Badges -->
+            <div class="expertise-left-col">
+              <h3 class="expertise-title-stacked">
+                MY<br />
+                EXPERTISE
+              </h3>
+              
+              <p class="expertise-lead-paragraph">
+                I design and build digital experiences where <span class="text-gold">design, code and motion</span> work as one.
+              </p>
+
+              <p class="expertise-sub-paragraph">
+                From expressive interfaces to smooth interactions, I combine frontend engineering with visual design focus to build digital experiences that feel alive.
+              </p>
+
+              <!-- Interactive Floating Physics Badges Layer -->
+              <div id="floating-badges-container" class="floating-badges-box">
+                <!-- Badges render here via floatingBadges.js -->
+              </div>
+
+              <!-- Tech Tag Pills List -->
+              <div class="expertise-left-tags">
+                <span class="left-tag">.NET CORE</span>
+                <span class="left-tag">C#</span>
+                <span class="left-tag">REACT</span>
+                <span class="left-tag">JAVASCRIPT</span>
+                <span class="left-tag">MENDIX</span>
+                <span class="left-tag">SQL SERVER</span>
+              </div>
+            </div>
+
+            <!-- Right Column: Accordion Expertise Cards -->
+            <div class="expertise-cards-column" id="expertise-cards-container">
+              <!-- Dynamically populated via JS -->
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Work Showcase Section -->
+      <section id="work" class="section-padding">
+        
+        <!-- Marquee Ticker Banner (Visarg's Real Tech Stack) -->
+        <div class="ticker-banner">
+          <div class="ticker-track">
+            <div class="ticker-item"><span>ASP.NET CORE</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>C#</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>JAVASCRIPT</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>REACT.JS</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>MENDIX</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>SIGNALR</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>WEB API</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>SQL SERVER</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>EF CORE</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>NODE.JS</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>LARAVEL</span><span class="dot">•</span></div>
+            <!-- Duplicate for infinite marquee loop -->
+            <div class="ticker-item"><span>ASP.NET CORE</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>C#</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>JAVASCRIPT</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>REACT.JS</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>MENDIX</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>SIGNALR</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>WEB API</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>SQL SERVER</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>EF CORE</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>NODE.JS</span><span class="dot">•</span></div>
+            <div class="ticker-item"><span>LARAVEL</span><span class="dot">•</span></div>
+          </div>
+        </div>
+
+        <div class="container-custom relative">
+          
+          <!-- Centered Work Section Header -->
+          <div class="about-header-centered mb-16">
+            <div class="about-top-tag">03 &nbsp;──&nbsp; SELECTED WORKS</div>
+            <h2 class="about-main-heading text-gold-gradient">FEATURED PROJECTS</h2>
+            
+            <!-- Interactive Gold Elastic String Line -->
+            <div class="interactive-string-container about-string-wrap">
+              <svg viewBox="0 0 500 40" class="string-svg">
+                <path class="string-path" d="M 0 20 Q 250 20 500 20" stroke="#c5a880" stroke-width="2.5" fill="none" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Project Cards List Stack -->
+          <div class="project-cards-stack" id="projects-list-container">
+            <!-- Dynamically populated via renderProjects() in main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Journal & Experience Section -->
+      <section id="journal" class="section-padding">
+        <div class="container-custom relative">
+          
+          <!-- Centered Journal Header -->
+          <div class="about-header-centered mb-16">
+            <div class="about-top-tag">04 &nbsp;──&nbsp; JOURNAL & EXPERIENCE</div>
+            <h2 class="about-main-heading text-gold-gradient">CAREER & INSIGHTS</h2>
+            
+            <!-- Interactive Gold Elastic String Line -->
+            <div class="interactive-string-container about-string-wrap">
+              <svg viewBox="0 0 500 40" class="string-svg">
+                <path class="string-path" d="M 0 20 Q 250 20 500 20" stroke="#c5a880" stroke-width="2.5" fill="none" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Journal Cards Stack -->
+          <div class="journal-cards-stack" id="journal-list-container">
+            <!-- Dynamically populated via renderJournal() in main.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section-padding">
+        <div class="container-custom">
+          
+          <div class="section-header-tag">
+            <span>[04]</span>
+            <span>CONTACT</span>
+            <div class="line"></div>
+            <span>GET IN TOUCH</span>
+          </div>
+
+          <div class="grid-2col">
+            <!-- Left Info & Pill Cards -->
+            <div>
+              <h2 class="contact-title">
+                Let's create <br /><span>something</span> meaningful.
+              </h2>
+              <p class="bio-text">
+                Have a project in mind, a question, or simply want to talk about design and code? I'd love to hear from you.
+              </p>
+
+              <!-- Quick Info Pill Cards -->
+              <div style="margin-top: 24px;">
+                <div class="contact-card">
+                  <div class="contact-card-left">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                      <div class="contact-label">Email me</div>
+                      <div class="contact-value">vickybhatporiya123@gmail.com</div>
+                    </div>
+                  </div>
+                  <button id="copy-email-btn" class="tag-pill cursor-pointer">Copy</button>
+                </div>
+
+                <a href="https://www.linkedin.com/in/visarg-bhatporiya/" target="_blank" rel="noopener noreferrer" class="contact-card no-underline">
+                  <div class="contact-card-left">
+                    <span class="contact-icon">💼</span>
+                    <div>
+                      <div class="contact-label">Connect</div>
+                      <div class="contact-value">LinkedIn Profile</div>
+                    </div>
+                  </div>
+                  <span style="font-size: 14px; color: var(--accent-gold);">↗</span>
+                </a>
+
+                <div class="contact-card">
+                  <div class="contact-card-left">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                      <div class="contact-label">Based in</div>
+                      <div class="contact-value">India / Global Remote</div>
+                    </div>
+                  </div>
+                  <span class="dot-online"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Glass Contact Form -->
+            <div class="contact-form-card">
+              <form id="contact-form">
+                <div class="form-group-row">
+                  <div>
+                    <label class="form-label">Your Name</label>
+                    <input type="text" required placeholder="John Doe" class="form-input" />
+                  </div>
+                  <div>
+                    <label class="form-label">Your Email</label>
+                    <input type="email" required placeholder="john@example.com" class="form-input" />
+                  </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                  <label class="form-label">Your Message</label>
+                  <textarea rows="5" required placeholder="Tell me about your project or idea..." class="form-input resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                  <span>Send Message</span>
+                  <span>↗</span>
+                </button>
+                <p id="form-status" class="text-xs text-center font-mono text-green-400 hidden mt-4">✓ Message sent successfully!</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div>
+          <span>© <span id="current-year">2026</span> VISARG BHATPORIYA. ALL RIGHTS RESERVED.</span>
+        </div>
+        <div>
+          <span>LOCAL TIME: <span id="local-time" style="color: var(--text-cream);">00:00:00 IST</span></span>
+        </div>
+        <button id="scroll-top-btn" class="btn-scroll-top">
+          BACK TO TOP ↑
+        </button>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Project Details Modal Overlay -->
+  <div id="project-modal">
+    <div class="project-modal-container">
+      <!-- Modal Header -->
+      <div class="modal-header-bar">
+        <div>
+          <div class="modal-meta-row">
+            <span id="modal-category" class="modal-cat-tag">CATEGORY</span>
+            <span class="dot-sep">•</span>
+            <span id="modal-period" class="modal-date-tag">DATE</span>
+          </div>
+          <h3 id="modal-title" class="modal-title-heading">Project Title</h3>
+        </div>
+        <button id="modal-close-btn" class="modal-close-icon-btn" aria-label="Close modal">✕</button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body-scroll">
+        <div class="modal-grid-2col">
+          
+          <!-- Left Column: Image & Tech Pills -->
+          <div class="modal-left-media">
+            <div class="modal-img-wrap">
+              <img id="modal-image" src="" alt="Project Preview" class="modal-preview-img" />
+            </div>
+            <div class="modal-tech-box">
+              <div class="modal-sub-label">TECHNOLOGY STACK</div>
+              <div id="modal-tags" class="tag-pills"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Project Overview & Resume Highlights -->
+          <div class="modal-right-info">
+            <div class="modal-info-block">
+              <h4 class="modal-section-title">PROJECT OVERVIEW</h4>
+              <p id="modal-description" class="modal-desc-text"></p>
+            </div>
+
+            <div class="modal-info-block">
+              <h4 class="modal-section-title">KEY HIGHLIGHTS & IMPLEMENTATION</h4>
+              <ul id="modal-highlights-list" class="modal-bullet-list"></ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
