@@ -27,19 +27,32 @@
     </filter>
   </svg>
 
-  <!-- Preloader Screen -->
+  <!-- Preloader Screen (Matching Reference Screenshot media_1788773089779.png) -->
   <div id="preloader">
-    <div class="loader-ring-wrapper">
-      <svg class="loader-ring-svg" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(0,0,0,0.06)" stroke-width="2" />
-        <path d="M 50,5 A 45,45 0 0 1 95,50" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round" />
-      </svg>
-      <div class="absolute inset-0 flex items-center justify-center">
-        <span id="loader-percent">0%</span>
+    <div class="loader-content-wrapper">
+      <!-- Large Percentage Counter Text -->
+      <span id="loader-percent">0%</span>
+
+      <!-- Rotating Curved Pencil Icon -->
+      <div class="loader-pencil-box">
+        <svg class="loader-pencil-svg" viewBox="0 0 100 100">
+          <g transform="rotate(-30 50 50)">
+            <!-- Curved Pencil Body Arc -->
+            <path d="M 30 20 A 35 35 0 0 1 75 65" stroke="#d5be9b" stroke-width="12" fill="none" stroke-linecap="butt" />
+            <!-- Silver Ferrule / Ring -->
+            <path d="M 23 23 A 35 35 0 0 1 31 19" stroke="#cccccc" stroke-width="12" fill="none" />
+            <path d="M 25 21 A 35 35 0 0 1 29 19" stroke="#888888" stroke-width="12" fill="none" />
+            <!-- Pink Eraser Top -->
+            <path d="M 18 27 A 35 35 0 0 1 23 23" stroke="#e8a8a8" stroke-width="12" fill="none" stroke-linecap="round" />
+            <!-- Sharpened Wood Cone & Lead Tip -->
+            <polygon points="75,59 87,74 69,71" fill="#d5be9b" />
+            <polygon points="80,67 87,74 74,72" fill="#111111" />
+          </g>
+        </svg>
       </div>
-    </div>
-    <div id="hello-svg-container" class="opacity-0 transition-opacity duration-300">
-      <div class="hello-text">hello</div>
+
+      <!-- Bottom Dot Indicator -->
+      <div class="loader-dot-indicator">●</div>
     </div>
   </div>
 
