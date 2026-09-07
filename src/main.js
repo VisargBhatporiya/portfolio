@@ -96,17 +96,19 @@ function initFullscreenMenu() {
   });
 }
 
-// 3. Preloader Sequence
+// 3. Preloader Sequence (Matching Reference Screenshots)
 function initPreloader() {
   const preloader = document.querySelector('#preloader');
   const percentEl = document.querySelector('#loader-percent');
-  const helloSvg = document.querySelector('#hello-svg-container');
+  const loaderContent = document.querySelector('.loader-content-wrapper');
+  const helloWrapper = document.querySelector('#hello-container');
+  const helloPath = document.querySelector('#hello-path');
 
   if (!preloader || !percentEl) return;
 
   let count = 0;
-  const duration = 900; // ms
-  const intervalTime = 20;
+  const duration = 850; // ms
+  const intervalTime = 18;
   const increment = 100 / (duration / intervalTime);
 
   const timer = setInterval(() => {
@@ -116,21 +118,50 @@ function initPreloader() {
       clearInterval(timer);
       percentEl.textContent = '100%';
 
-      if (helloSvg) helloSvg.classList.remove('opacity-0');
-
+      // Step 1: Fade out Phase 1 (percentage & spinning pencil)
       setTimeout(() => {
-        gsap.to(preloader, {
-          yPercent: -100,
-          duration: 0.6,
-          ease: 'power3.inOut',
-          onComplete: () => {
-            preloader.style.display = 'none';
-            playHeroEntrance();
-            initScrollAnimations();
-            ScrollTrigger.refresh();
-          }
-        });
-      }, 350);
+        if (loaderContent) {
+          gsap.to(loaderContent, {
+            opacity: 0,
+            y: -15,
+            duration: 0.25,
+            ease: 'power2.in',
+            onComplete: () => {
+              loaderContent.style.display = 'none';
+
+              // Step 2: Show Phase 2 (Cursive hello handwriting animation)
+              if (helloWrapper) {
+                helloWrapper.classList.add('active');
+
+                if (helloPath) {
+                  const pathLength = helloPath.getTotalLength();
+                  gsap.set(helloPath, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
+                  gsap.to(helloPath, {
+                    strokeDashoffset: 0,
+                    duration: 0.75,
+                    ease: 'power2.inOut'
+                  });
+                }
+
+                // Step 3: Slide up preloader screen to reveal Hero
+                setTimeout(() => {
+                  gsap.to(preloader, {
+                    yPercent: -100,
+                    duration: 0.65,
+                    ease: 'power3.inOut',
+                    onComplete: () => {
+                      preloader.style.display = 'none';
+                      playHeroEntrance();
+                      initScrollAnimations();
+                      ScrollTrigger.refresh();
+                    }
+                  });
+                }, 850);
+              }
+            }
+          });
+        }
+      }, 150);
     } else {
       percentEl.textContent = `${Math.floor(count)}%`;
     }

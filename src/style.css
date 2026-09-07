@@ -378,6 +378,28 @@ html, body {
   100% { transform: rotate(360deg); }
 }
 
+.hello-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.hello-wrapper.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hello-svg {
+  overflow: visible;
+  filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.4));
+}
+
 /* Hero Section (Matching Reference Screenshot media_1788761955943.png) */
 .hero-section {
   position: relative;
