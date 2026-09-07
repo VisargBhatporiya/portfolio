@@ -96,19 +96,18 @@ function initFullscreenMenu() {
   });
 }
 
-// 3. Preloader Sequence (Matching Reference Screenshots)
+// 3. Preloader Sequence (iOS Cursive Greetings Multi-Language Cycle)
 function initPreloader() {
   const preloader = document.querySelector('#preloader');
   const percentEl = document.querySelector('#loader-percent');
   const loaderContent = document.querySelector('.loader-content-wrapper');
   const helloWrapper = document.querySelector('#hello-container');
-  const helloPath = document.querySelector('#hello-path');
 
   if (!preloader || !percentEl) return;
 
   let count = 0;
-  const duration = 850; // ms
-  const intervalTime = 18;
+  const duration = 750; // ms
+  const intervalTime = 16;
   const increment = 100 / (duration / intervalTime);
 
   const timer = setInterval(() => {
@@ -118,34 +117,91 @@ function initPreloader() {
       clearInterval(timer);
       percentEl.textContent = '100%';
 
-      // Step 1: Fade out Phase 1 (percentage & spinning pencil)
+      // Step 1: Fade out Phase 1 (percentage counter & spinning pencil)
       setTimeout(() => {
         if (loaderContent) {
           gsap.to(loaderContent, {
             opacity: 0,
             y: -15,
-            duration: 0.25,
+            duration: 0.2,
             ease: 'power2.in',
             onComplete: () => {
               loaderContent.style.display = 'none';
 
-              // Step 2: Show Phase 2 (Cursive hello handwriting animation)
+              // Step 2: iOS-Style High-Precision Calligraphy Greeting Animation
               if (helloWrapper) {
                 helloWrapper.classList.add('active');
 
-                if (helloPath) {
-                  const pathLength = helloPath.getTotalLength();
-                  gsap.set(helloPath, { strokeDasharray: pathLength, strokeDashoffset: pathLength });
-                  gsap.to(helloPath, {
-                    strokeDashoffset: 0,
-                    duration: 0.75,
-                    ease: 'power2.inOut'
-                  });
-                }
+                const greetings = [
+                  document.querySelector('#hello-text-el'),
+                  document.querySelector('#namaste-text-el')
+                ].filter(Boolean);
 
-                // Step 3: Slide up preloader screen to reveal Hero
-                setTimeout(() => {
-                  gsap.to(preloader, {
+                const tl = gsap.timeline();
+
+                greetings.forEach((el) => {
+                  tl.call(() => {
+                    greetings.forEach(g => {
+                      g.classList.add('hidden-greeting');
+                      g.style.opacity = '0';
+                    });
+                    el.classList.remove('hidden-greeting');
+                  })
+                  .fromTo(el,
+                    { opacity: 0, scale: 0.86, y: 18 },
+                    { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: 'back.out(1.4)' }
+                  )
+                  .to(el, {
+                    opacity: 0,
+                    scale: 1.06,
+                    y: -12,
+                    duration: 0.38,
+                    delay: 0.45,
+                    ease: 'power2.in'
+                  });
+                });
+
+                // Step 3: Stepped Geometric Block Reveal Transition (Matching media_1788775352938.png)
+                const steppedOverlay = document.querySelector('#stepped-reveal-overlay');
+                const steppedLine = document.querySelector('.stepped-line');
+                const blockOuter = document.querySelector('.block-outer');
+                const blockMid = document.querySelector('.block-mid');
+                const blockCenter = document.querySelector('.block-center');
+
+                if (steppedOverlay) {
+                  // 3a. Activate overlay container
+                  tl.call(() => {
+                    steppedOverlay.classList.add('active');
+                  })
+                  // 3b. Expand center line across horizontally
+                  .to(steppedLine, {
+                    scaleX: 1,
+                    duration: 0.22,
+                    ease: 'power2.out'
+                  })
+                  // 3c. Expand stepped cross blocks vertically (forming exact image geometry)
+                  .to([blockOuter, blockMid, blockCenter], {
+                    scaleY: 1,
+                    duration: 0.32,
+                    stagger: 0.06,
+                    ease: 'back.out(1.2)'
+                  })
+                  // 3d. Expand entire stepped shape outward to fill viewport, revealing Hero
+                  .to(steppedOverlay, {
+                    scale: 2.5,
+                    duration: 0.45,
+                    ease: 'power3.in',
+                    onStart: () => {
+                      playHeroEntrance();
+                    },
+                    onComplete: () => {
+                      preloader.style.display = 'none';
+                      initScrollAnimations();
+                      ScrollTrigger.refresh();
+                    }
+                  });
+                } else {
+                  tl.to(preloader, {
                     yPercent: -100,
                     duration: 0.65,
                     ease: 'power3.inOut',
@@ -156,12 +212,12 @@ function initPreloader() {
                       ScrollTrigger.refresh();
                     }
                   });
-                }, 850);
+                }
               }
             }
           });
         }
-      }, 150);
+      }, 120);
     } else {
       percentEl.textContent = `${Math.floor(count)}%`;
     }

@@ -320,7 +320,7 @@ html, body {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Preloader (Matching Reference Screenshot media_1788773089779.png) */
+/* Preloader (Matching Reference Screenshots media_1788775194003 & media_1788775214446) */
 #preloader {
   position: fixed;
   inset: 0;
@@ -346,7 +346,7 @@ html, body {
   font-size: clamp(4.5rem, 9vw, 7.5rem);
   font-weight: 400;
   line-height: 0.9;
-  color: #eee8df;
+  color: #d5be9b;
   letter-spacing: 0.03em;
   transform: scaleY(1.15);
   margin-bottom: 8px;
@@ -367,7 +367,7 @@ html, body {
 }
 
 .loader-dot-indicator {
-  color: #ffffff;
+  color: #d5be9b;
   font-size: 11px;
   opacity: 0.85;
   margin-top: 14px;
@@ -395,9 +395,101 @@ html, body {
   visibility: visible;
 }
 
-.hello-svg {
+.greeting-svg-box {
+  position: relative;
+  width: 540px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.draw-greeting-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   overflow: visible;
-  filter: drop-shadow(0 0 10px rgba(197, 168, 128, 0.4));
+  filter: drop-shadow(0 0 14px rgba(213, 190, 155, 0.45)) drop-shadow(0 0 32px rgba(197, 168, 128, 0.35));
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.greeting-cursive-text {
+  font-family: 'Great Vibes', 'Alex Brush', 'Sacramento', 'Italianno', cursive;
+  font-size: 114px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.font-namaste {
+  font-family: 'Kalam', 'Noto Serif Devanagari', 'Rozha One', serif;
+  font-size: 104px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.greeting-cursive-text.hidden-greeting {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Phase 3: Stepped Geometric Block Reveal Overlay (Matching Reference Image media_1788775352938.png) */
+.stepped-reveal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 9995;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.stepped-reveal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.stepped-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background-color: #eee8df;
+  transform: scaleX(0);
+  transform-origin: center;
+  z-index: 10;
+}
+
+.stepped-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleY(0);
+  background-color: #eee8df;
+  transform-origin: center;
+}
+
+.block-center {
+  width: 32vw;
+  height: 100vh;
+  z-index: 3;
+}
+
+.block-mid {
+  width: 62vw;
+  height: 64vh;
+  z-index: 2;
+}
+
+.block-outer {
+  width: 86vw;
+  height: 24vh;
+  z-index: 1;
 }
 
 /* Hero Section (Matching Reference Screenshot media_1788761955943.png) */
